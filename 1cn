@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+int main() {
+ const int MAXSIZE = 100;
+ char in[MAXSIZE];
+ char stuff[MAXSIZE];
+ char destuff[MAXSIZE];
+ int count = 0;
+ cout << "Enter the input character string (0's & 1's only):" << endl;
+ cin >> in;
+ char *p = in;
+ char *q = stuff;
+ while (*p != '\0') {
+ if (*p == '0') {
+ *q = *p;
+ q++;
+ p++;
+ } else {
+ while (*p == '1' && count != 5) {
+ count++;
+ *q = *p;
+ q++;
+ p++;
+ }
+ if (count == 5) {
+ *q = '0';
+ q++;
+ }
+ count = 0;
+ }
+ }
+ *q = '\0';
+ cout << "\nThe stuffed character string is:" << endl;
+ cout << stuff << endl;
+ p = stuff;
+ q = destuff;
+ count = 0;
+ while (*p != '\0') {
+ if (*p == '0') {
+ *q = *p;
+Name : Mansi Gajanan Patil
+Section : TE-'B3' ; Roll No: 73
+ q++;
+ p++;
+ } else {
+ while (*p == '1' && count != 5) {
+ count++;
+ *q = *p;
+ q++;
+ p++;
+ }
+ if (count == 5) {
+ p++;
+ }
+ count = 0;
+ }
+ }
+ *q = '\0';
+ cout << "The destuffed character string is:" << endl;
+ cout << destuff << endl;
+ return 0;
+}
